@@ -4,7 +4,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandl
 
 # Вставьте ваш токен, полученный от @BotFather в Telegram
 TOKEN = os.environ['TORRENT_BOT_TOKEN']
-WHITE_LIST = os.environ['TORRENT_BOT_WHITE_LIST'].split(',')
+WHITE_LIST = set(int(it) for it in os.environ['TORRENT_BOT_WHITE_LIST'].split(','))
 TORRENT_DIR = '/library/torrent/files/'
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
