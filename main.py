@@ -11,6 +11,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.message:
         return
     if update.message.chat_id not in WHITE_LIST:
+        await update.message.reply_text(f'Привет! Твоего chat_id: {update.message.chat_id} нет в белом списке.')
         return
     await update.message.reply_text('Привет! Отправьте мне торрент-файл, и я сохраню его.')
 
