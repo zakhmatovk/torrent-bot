@@ -19,6 +19,10 @@ async def receive_file(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     # Проверяем, что полученный файл является документом
     if not update.message:
         return
+    if update.message.chat_id not in WHITE_LIST:
+        await update.message.reply_text(f'Привет! Твоего chat_id: {update.message.chat_id} нет в белом списке.')
+        return
+
     if update.message.document:
         file = update.message.document
         if file.file_name and file.file_name.endswith('.torrent'):
